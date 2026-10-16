@@ -137,7 +137,6 @@ video,.still{width:100%;max-width:100%;background:#000;border-radius:6px;display
 .pitch{font:700 46px/1.08 var(--display);letter-spacing:-.03em;color:var(--ink);white-space:nowrap;margin-top:-4px}
 @media (max-width:620px){.pitch{white-space:normal;font-size:30px}}
 .rule{border:0;border-top:1px solid var(--line);margin:10px 0 4px;width:100%}
-.tm{font-size:.42em;font-weight:500;vertical-align:super;line-height:0;margin-left:.04em;letter-spacing:0}
 .say{font:700 clamp(20px,2.2vw,26px)/1.25 var(--display);letter-spacing:-.015em;padding:20px 24px;border-left:4px solid var(--cue);background:var(--cue-soft);border-radius:0 6px 6px 0}
 
 /* transcript */
@@ -302,6 +301,54 @@ td.m{font:500 12.5px var(--mono);white-space:nowrap}
 [data-fit] span{display:block;white-space:nowrap}
 @media (max-width:620px){[data-fit] span{white-space:normal}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* Act III · The world */
+.worldmap{padding:16px 18px;display:grid;gap:10px}
+.worldmap svg{width:100%;height:auto;display:block}
+.wm-grid line{stroke:var(--line);stroke-width:1}
+.wm-grid line.eq{stroke-dasharray:4 6}
+.wm-arcs path{fill:none;stroke:var(--cue);stroke-width:1.6;stroke-dasharray:5 7;animation:wmflow 1.6s linear infinite;opacity:.85}
+@keyframes wmflow{to{stroke-dashoffset:-24}}
+.wm-hub .halo{fill:var(--cue-soft)}
+.wm-hub .core{fill:var(--ink)}
+.wm-hub .hub-t{font:600 15px var(--mono);letter-spacing:.08em;fill:var(--ink)}
+.wm-hub .hub-s{font:400 13px var(--mono);fill:var(--muted)}
+.wm-city circle{fill:var(--surface);stroke:var(--cue);stroke-width:3}
+.wm-city text{font:600 15px var(--body);fill:var(--ink)}
+.std .w{padding-top:2px}
+.std b{font-weight:600}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.flow>div{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--ink);border-radius:6px;padding:14px;display:grid;gap:6px;align-content:start}
+.flow h3{font-size:16px}
+.flow p{font-size:14px;color:var(--muted);line-height:1.4}
+.flow .human{border-top-color:var(--real);background:var(--real-soft)}
+.flow .human .k{color:var(--real)}
+.clock{display:grid;gap:8px}
+.crow{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center}
+.crow .cl{font-size:14px}
+.crow .cells{display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:3px}
+.crow .cells i{display:block;height:22px;border-radius:3px;background:var(--sunk);border:1px solid var(--line)}
+.crow .cells i.on{background:var(--cue);border-color:var(--cue)}
+.crow .cells.sum i.on{background:var(--real);border-color:var(--real)}
+.crow.ax .hrs{display:flex;justify-content:space-between;font:500 11px var(--mono);color:var(--muted)}
+.buy{display:grid;gap:8px;align-content:start;border-top:3px solid var(--cue)}
+.buy .k{color:var(--cue-ink)}
+.buy h3{font:700 24px/1.1 var(--display);letter-spacing:-.02em}
+.buy p{font-size:15px;color:var(--muted)}
+.tl.tl3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tl b{color:var(--ink);font-weight:600}
+@media (max-width:1000px){.flow{grid-template-columns:repeat(3,minmax(0,1fr))}.tl.tl3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:620px){.flow,.tl.tl3{grid-template-columns:1fr}.crow{grid-template-columns:76px minmax(0,1fr)}.crow .cells{gap:1px}.wm-city text{font-size:20px}}
+.appr{display:grid}
+.arow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.arow:last-child{border-bottom:0}
+.an{display:grid;gap:3px}.an b{font-weight:600}.an span{font:500 12px/1.4 var(--mono);color:var(--muted)}
+.an .ast{color:var(--real)}
+.abtns{display:flex;gap:6px;flex-wrap:wrap}
+.ab{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:7px 11px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.ab:hover{border-color:var(--ink)}
+.ab[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media (max-width:620px){.arow{grid-template-columns:1fr}}
+.tm{font-size:.42em;font-weight:500;vertical-align:super;line-height:0;margin-left:.04em;letter-spacing:0}
 </style>
 </head>
 <body>
@@ -405,8 +452,139 @@ td.m{font:500 12.5px var(--mono);white-space:nowrap}
   <div class="socials" id="socials"></div>
 </section>
 
-<section data-act="Act III · The show" data-title="The attendee catch-up" id="s7" hidden>
-  <div class="eyebrow"><b>Cue 07</b> · Act III · The show <span class="badge ill">Illustrative</span></div>
+<!-- ============ ACT III · THE WORLD ============ -->
+<section data-act="Act III · The world" data-title="Shoot anywhere" id="w1" hidden>
+  <div class="eyebrow"><b>Cue 07</b> · Act III · The world <span class="badge ill">Proposed model</span></div>
+  <h2>The footage travels. The crew doesn't.</h2>
+  <p class="lede">Aftershow never sends anyone to the event. The event films the way it already does and uploads once. <strong>The packages come back to wherever the organizer, the attendees and the sponsors happen to be,</strong> whether that's Toronto, New York, Cannes or Singapore. It's one engine, held to one standard, and it delivers the morning after.</p>
+  <div class="panel worldmap">
+    <svg viewBox="0 0 1000 440" role="img" aria-label="Events in seven cities upload to one Aftershow engine">
+      <g class="wm-grid">
+        <line x1="0" y1="90" x2="1000" y2="90"/><line x1="0" y1="191" x2="1000" y2="191"/>
+        <line x1="0" y1="292" x2="1000" y2="292" class="eq"/><line x1="0" y1="393" x2="1000" y2="393"/>
+      </g>
+      <g class="wm-arcs">
+        <path d="M279,174 Q330,60 500,46"/><path d="M294,182 Q360,70 500,46"/>
+        <path d="M371,355 Q380,120 500,46"/><path d="M519,175 Q520,100 500,46"/>
+        <path d="M654,224 Q620,90 500,46"/><path d="M788,288 Q700,80 500,46"/>
+        <path d="M920,383 Q800,60 500,46"/>
+      </g>
+      <g class="wm-hub">
+        <circle cx="500" cy="46" r="26" class="halo"/><circle cx="500" cy="46" r="12" class="core"/>
+        <text x="540" y="40" class="hub-t">AFTERSHOW ENGINE</text>
+        <text x="540" y="58" class="hub-s">transcribe · context · select · review · deliver</text>
+      </g>
+      <g class="wm-city">
+        <circle cx="279" cy="174" r="6"/><text x="268" y="178" text-anchor="end">Toronto</text>
+        <circle cx="294" cy="182" r="6"/><text x="282" y="202" text-anchor="end">New York</text>
+        <circle cx="371" cy="355" r="6"/><text x="384" y="359">São Paulo</text>
+        <circle cx="519" cy="175" r="6"/><text x="532" y="179">Cannes</text>
+        <circle cx="654" cy="224" r="6"/><text x="667" y="228">Dubai</text>
+        <circle cx="788" cy="288" r="6"/><text x="801" y="292">Singapore</text>
+        <circle cx="920" cy="383" r="6"/><text x="907" y="387" text-anchor="end">Sydney</text>
+      </g>
+    </svg>
+    <div class="legend"><span><i class="sw" style="background:var(--cue);border-color:var(--cue)"></i>Footage up, packages back</span><span>Cities shown are examples, not live deployments.</span></div>
+  </div>
+  <div class="grid4">
+    <div class="panel stat"><span class="k">Crew on site</span><b>0</b><span>the event films as usual</span></div>
+    <div class="panel stat"><span class="k">Input</span><b>1 upload</b><span>per session or per day</span></div>
+    <div class="panel stat"><span class="k">Turnaround</span><b>Overnight</b><span>Day 1 cut before Day 2</span></div>
+    <div class="panel stat"><span class="k">Coverage</span><b>Any city</b><span>one engine, one standard</span></div>
+  </div>
+</section>
+
+<section data-act="Act III · The world" data-title="The capture standard" id="w2" hidden>
+  <div class="eyebrow"><b>Cue 08</b> · Act III · The world <span class="badge ill">Proposed model</span></div>
+  <h2>One page decides the quality.</h2>
+  <p class="lede">The biggest variable isn't the engine. It's the input. So Aftershow publishes a Capture Standard that any AV team can meet with equipment it already owns. <strong>We don't ask an event to change how it films.</strong> We ask it to keep the audio clean and the paperwork done.</p>
+  <div class="grid2">
+    <div class="panel"><div class="k" style="margin-bottom:6px">The Capture Standard · v1</div>
+      <div class="list std">
+        <div><span class="w">Audio</span><span><b>A clean feed from the sound desk.</b> The transcript is the raw material, so audio matters more than picture. A bad room mic ruins a great camera.</span></div>
+        <div><span class="w">Picture</span><span><b>A speaker shot plus a wide.</b> 1080p is plenty. The vertical crops are built from the speaker shot.</span></div>
+        <div><span class="w">Slides</span><span><b>The deck behind every talk.</b> It anchors names and terms in the captions and settles the words the audio leaves uncertain.</span></div>
+        <div><span class="w">Programme</span><span><b>The run of show, speakers and sponsors.</b> This becomes the event lens, the second of the three.</span></div>
+        <div><span class="w">Releases</span><span><b>Speaker consent, collected at registration.</b> It's handled before anyone touches a file, not chased afterward.</span></div>
+      </div></div>
+    <div style="display:grid;gap:14px">
+      <div class="panel"><div class="k" style="margin-bottom:6px">How it arrives</div>
+        <div class="list">
+          <div><span class="w">Upload</span><span>Drag and drop into the event's Aftershow portal.</span></div>
+          <div><span class="w">Bucket</span><span>A shared cloud folder the AV team already uses.</span></div>
+          <div><span class="w">Link</span><span>A Vimeo or YouTube link, private or unlisted.</span></div>
+          <div><span class="w">Stream</span><span>The livestream feed, for same-night turnaround.</span></div>
+        </div></div>
+      <p class="say">Tape One met this standard with one camera and house audio.</p>
+    </div>
+  </div>
+</section>
+
+<section data-act="Act III · The world" data-title="The desk" id="w3" hidden>
+  <div class="eyebrow"><b>Cue 09</b> · Act III · The world <span class="badge ill">Proposed model</span></div>
+  <h2>Software with an editorial spine.</h2>
+  <p class="lede">The machine does the volume. A human desk signs off every selection before it ships. <strong>Over time, the desk's judgment is codified into the engine, and the margin improves with it.</strong> This is the throughline of Tape One applied to the business itself: when execution is abundant, judgment is the product.</p>
+  <div class="flow">
+    <div><span class="k">01</span><h3>Ingest</h3><p>Footage, slides and programme arrive from anywhere.</p></div>
+    <div><span class="k">02</span><h3>Transcribe</h3><p>Every word, timed, in minutes.</p></div>
+    <div><span class="k">03</span><h3>Context</h3><p>The talk, the event and the industry: three lenses.</p></div>
+    <div><span class="k">04</span><h3>Select</h3><p>The arc, the cuts, the captions, the crops.</p></div>
+    <div class="human"><span class="k">05 · Human</span><h3>The desk</h3><p>An editor reviews every pick. Nothing ships unseen.</p></div>
+    <div><span class="k">06 · Organizer</span><h3>Approve</h3><p>Download it, publish it, or schedule it. Cut by cut.</p></div>
+  </div>
+  <div class="panel"><div class="k" style="margin-bottom:6px">The organizer's approval screen · one row per cut</div>
+    <div class="appr" id="appr">
+      <div class="arow"><span class="an"><b>Highlight reel</b><span>3:01 · captions, title, description, chapters, thumbnail</span><span class="ast"></span></span><span class="abtns" data-pick="1"><button type="button" class="ab">Approve &amp; download</button><button type="button" class="ab">Approve &amp; publish</button><button type="button" class="ab">Approve &amp; schedule</button></span></div>
+      <div class="arow"><span class="an"><b>The difficulty trap</b><span>Social cut · 0:57 · burned-in captions, post copy</span><span class="ast"></span></span><span class="abtns" data-pick="2"><button type="button" class="ab">Approve &amp; download</button><button type="button" class="ab">Approve &amp; publish</button><button type="button" class="ab">Approve &amp; schedule</button></span></div>
+      <div class="arow"><span class="an"><b>Practitioners call Tuesday</b><span>Social cut · 1:07 · burned-in captions, post copy</span><span class="ast"></span></span><span class="abtns" data-pick="0"><button type="button" class="ab">Approve &amp; download</button><button type="button" class="ab">Approve &amp; publish</button><button type="button" class="ab">Approve &amp; schedule</button></span></div>
+    </div>
+    <p class="note" style="margin-top:10px">Publishing goes to the organizer's own YouTube channel, connected once through Google sign-in. Aftershow never posts from its own accounts, and nothing goes out without a click. Every published piece can be pulled with one more.</p>
+  </div>
+  <div class="panel"><div class="k" style="margin-bottom:12px">Two desks, most of the clock · hours in UTC</div>
+    <div class="clock">
+      <div class="crow"><span class="cl">Asia desk</span><div class="cells" data-on="0-11"></div></div>
+      <div class="crow"><span class="cl">Europe desk</span><div class="cells" data-on="7-18"></div></div>
+      <div class="crow"><span class="cl"><b>Combined</b></span><div class="cells sum" data-on="0-18"></div></div>
+      <div class="crow ax"><span></span><div class="hrs"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div></div>
+    </div>
+    <p class="note" style="margin-top:12px">Nineteen of twenty-four hours are covered at launch. An Americas desk closes the gap when the first event there signs. A Cannes Day 1 can be cut overnight and land in inboxes before Day 2 breakfast.</p>
+  </div>
+</section>
+
+<section data-act="Act III · The world" data-title="Rights and trust" id="w4" hidden>
+  <div class="eyebrow"><b>Cue 10</b> · Act III · The world <span class="badge ill">Proposed model</span></div>
+  <h2>Trust is part of the product.</h2>
+  <p class="lede">Conservative organizers say yes when they keep control. Every piece is approved before it publishes, every speaker has consented before filming, and every region's rules are met where the data lives.</p>
+  <div class="grid3">
+    <div class="lens"><span class="num">1</span><h3>Consent</h3><p>Speaker releases are part of registration. Attendees opt in to their personal catch-up. Nobody is clipped by surprise.</p></div>
+    <div class="lens"><span class="num">2</span><h3>Approval</h3><p>The organizer sees everything before it goes out, with one click to approve and one to pull. Publishing goes to their own channel, never ours, and only on their click.</p></div>
+    <div class="lens"><span class="num">3</span><h3>Compliance</h3><p>GDPR in Europe, PDPA in Singapore, and regional data residency where a client requires it. The standard travels, and so does the paperwork.</p></div>
+  </div>
+  <p class="say">The data clause: the event owns its footage and its outputs. Aftershow holds aggregated, anonymized rights across events. That one clause is what makes Act V possible.</p>
+</section>
+
+<section data-act="Act III · The world" data-title="The model" id="w5" hidden>
+  <div class="eyebrow"><b>Cue 11</b> · Act III · The world <span class="badge ill">Proposed model</span></div>
+  <h2>Three ways to buy it. One engine underneath.</h2>
+  <p class="lede">The same pipeline is sold three ways, to three kinds of buyer. Each one feeds the same record.</p>
+  <div class="grid3">
+    <div class="panel buy"><span class="k">Per event</span><h3>The package</h3><p>For one-off conferences, summits and launches. One price per event, scaled by the number of sessions. The fastest yes.</p></div>
+    <div class="panel buy"><span class="k">Series licence</span><h3>The standard</h3><p>For associations and recurring events with chapters in many cities. An annual licence puts every chapter on the same standard, so it's repeatable revenue.</p></div>
+    <div class="panel buy"><span class="k">White label</span><h3>The partner</h3><p>For AV and production houses. They film, and Aftershow powers the package under their name. They become a distribution channel, not a competitor.</p></div>
+  </div>
+  <div class="panel buy"><span class="k">Add-on · any tier</span><h3>Distribution</h3><p>Approve &amp; publish, or approve &amp; schedule, straight to the organizer's own channels. The quarter's slate goes out on a cadence, and the viewing data comes back into the sponsor report. Production gets the content made. Distribution gets it seen.</p></div>
+  <div class="panel"><div class="k" style="margin-bottom:4px">The order we go in</div>
+    <div class="tl tl3">
+      <div><span class="w">Beachhead</span><p><b>Association networks.</b> Many small events, a forgiving production bar and a repeatable licence. This is the proof a software story needs.</p></div>
+      <div><span class="w">Pilot</span><p><b>Regional festivals.</b> Mid-size and multi-day, the place to prove same-night delivery and sponsor reporting at scale.</p></div>
+      <div><span class="w">Flagship</span><p><b>Global festivals.</b> The trophy. We arrive with proof, not a pitch.</p></div>
+    </div>
+  </div>
+  <p class="close" data-fit="60"><span>The engine proves it works.</span><span><em>The world proves it scales.</em></span></p>
+</section>
+
+<section data-act="Act IV · The show" data-title="The attendee catch-up" id="s7" hidden>
+  <div class="eyebrow"><b>Cue 12</b> · Act IV · The show <span class="badge ill">Illustrative</span></div>
   <h2>Your Aftershow, the morning after.</h2>
   <p class="lede">Every attendee gets the sessions they missed, filtered by what they care about. Each one comes as a one-minute reel and the point in one line. It arrives by email and in the event app before the jet lag wears off.</p>
   <div><div class="k" style="margin-bottom:10px">I care about</div><div class="chips" id="chips"></div></div>
@@ -414,8 +592,8 @@ td.m{font:500 12.5px var(--mono);white-space:nowrap}
   <p class="note" id="feedNote"></p>
 </section>
 
-<section data-act="Act III · The show" data-title="The sponsor view" id="s8" hidden>
-  <div class="eyebrow"><b>Cue 08</b> · Act III · The show <span class="badge ill">Illustrative</span></div>
+<section data-act="Act IV · The show" data-title="The sponsor view" id="s8" hidden>
+  <div class="eyebrow"><b>Cue 13</b> · Act IV · The show <span class="badge ill">Illustrative</span></div>
   <h2>The stage sponsor gets the room's thinking.</h2>
   <p class="lede">Today a stage sponsor buys a logo on the backdrop and a headcount. With Aftershow they get what was said on their stage, which themes owned it, and a stream of clips to run under their name for the next quarter.</p>
   <div class="seg" id="stageSeg" role="group" aria-label="Choose a stage"></div>
@@ -433,24 +611,24 @@ td.m{font:500 12.5px var(--mono);white-space:nowrap}
   <div class="panel"><div class="k" style="margin-bottom:6px" id="spMomTitle">Moments clipped from this stage</div><div class="list" id="spMoments"></div></div>
 </section>
 
-<section data-act="Act IV · Data & insights" data-title="The record" id="s9" hidden>
-  <div class="eyebrow"><b>Cue 09</b> · Act IV · Data & insights <span class="badge real">Real · Tape One</span></div>
+<section data-act="Act V · Data & insights" data-title="The record" id="s9" hidden>
+  <div class="eyebrow"><b>Cue 14</b> · Act V · Data & insights <span class="badge real">Real · Tape One</span></div>
   <h2>Every talk becomes a structured record.</h2>
   <p class="lede">The reels are the visible output. The record is the asset. Each session is broken down into claims, forecasts, tensions and signals, all timecoded and tagged. <strong>This record was built from Tape One.</strong></p>
   <div class="rec" id="rec"></div>
   <details class="panel"><summary class="k" style="cursor:pointer">Show the raw record</summary><pre class="json" id="json" style="margin-top:14px"></pre></details>
 </section>
 
-<section data-act="Act IV · Data & insights" data-title="The whole room" id="s10" hidden>
-  <div class="eyebrow"><b>Cue 10</b> · Act IV · Data & insights <span class="badge ill">Illustrative</span></div>
+<section data-act="Act V · Data & insights" data-title="The whole room" id="s10" hidden>
+  <div class="eyebrow"><b>Cue 15</b> · Act V · Data & insights <span class="badge ill">Illustrative</span></div>
   <h2>Thirty records, read together.</h2>
   <p class="lede">No attendee sees every session. The engine does. Once every session is a record, the event can be read as one conversation: where it agreed, where it split, and what it kept circling without naming.</p>
   <div class="panel scroll"><div class="heat" id="heat"></div></div>
   <div class="grid4" id="finds"></div>
 </section>
 
-<section data-act="Act IV · Data & insights" data-title="The data and insights play" id="s11" hidden>
-  <div class="eyebrow"><b>Cue 11</b> · Act IV · Data & insights <span class="badge ill">Illustrative</span></div>
+<section data-act="Act V · Data & insights" data-title="The data and insights play" id="s11" hidden>
+  <div class="eyebrow"><b>Cue 16</b> · Act V · Data & insights <span class="badge ill">Illustrative</span></div>
   <h2>Every event makes the next one smarter.</h2>
   <p class="lede">Records pool across events and years into one proprietary dataset: what an industry's most senior people said in public, with context, timecode and source. Nobody else holds this, and a competitor can't buy back the events it wasn't at.</p>
   <div class="grid2">
@@ -466,8 +644,8 @@ td.m{font:500 12.5px var(--mono);white-space:nowrap}
     <div class="scroll"><table><thead><tr><th>Forecast</th><th>Said by</th><th>Logged</th><th>Check</th><th>Status</th></tr></thead><tbody id="ledger"></tbody></table></div></div>
 </section>
 
-<section data-act="Act IV · Data & insights" data-title="The next 90 days" id="s12" hidden>
-  <div class="eyebrow"><b>Cue 12</b> · Act IV · Data & insights </div>
+<section data-act="Act V · Data & insights" data-title="The next 90 days" id="s12" hidden>
+  <div class="eyebrow"><b>Cue 17</b> · Act V · Data & insights </div>
   <h2 class="two" data-fit="60"><span>The event lasts two days.</span><span>The yield lasts a quarter.</span></h2>
   <div class="tl">
     <div><span class="w">Day 0</span><p>Reels and clips for every session, while the room is still full.</p></div>
@@ -477,10 +655,11 @@ td.m{font:500 12.5px var(--mono);white-space:nowrap}
     <div><span class="w">Quarter</span><p>The trend report: trajectory, forecast, off-agenda.</p></div>
     <div><span class="w">Next year</span><p>The programme is built from what the data learned.</p></div>
   </div>
-  <div class="grid3">
+  <div class="grid4">
     <div class="lens"><span class="num">II</span><h3>The engine</h3><p>Real today. One talk became two reels, five social clips and a structured record in under an hour, with open-source tools.</p></div>
-    <div class="lens"><span class="num">III</span><h3>The show</h3><p>The same engine across thirty sessions. Attendee catch-up and sponsor reporting are built from the same outputs.</p></div>
-    <div class="lens"><span class="num">IV</span><h3>Data &amp; insights</h3><p>The records compound. This is the defensible business: an insight, trend and forecasting dataset that grows with every event.</p></div>
+    <div class="lens"><span class="num">III</span><h3>The world</h3><p>Shot anywhere, uploaded once, delivered everywhere. A standard and a desk, not a crew.</p></div>
+    <div class="lens"><span class="num">IV</span><h3>The show</h3><p>The same engine across thirty sessions. Attendee catch-up and sponsor reporting are built from the same outputs.</p></div>
+    <div class="lens"><span class="num">V</span><h3>Data &amp; insights</h3><p>The records compound. This is the defensible business: an insight, trend and forecasting dataset that grows with every event.</p></div>
   </div>
   <p class="close" data-fit="64"><span>The event ends.</span><span><em>The Aftershow doesn't.</em></span></p>
 </section>
@@ -800,6 +979,15 @@ function fitPitch(){
 const _fc=fitCase; fitCase=function(){ _fc(); fitPitch(); fitAll(); };
 window.addEventListener("resize",fitCase);
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitCase);
+
+/* ---------- world clock ---------- */
+document.querySelectorAll(".crow .cells").forEach(c=>{const [a,b]=c.dataset.on.split("-").map(Number);let h="";for(let k=0;k<24;k++)h+=`<i class="${k>=a&&k<=b?"on":""}"></i>`;c.innerHTML=h;});
+
+/* ---------- approval screen ---------- */
+(function(){const ST=["Ready to download · package with captions and copy","Publishes to your YouTube channel now","Scheduled · Day 3, 09:00 · your YouTube channel"];
+document.querySelectorAll("#appr .abtns").forEach(g=>{const bs=[...g.querySelectorAll(".ab")];const st=g.closest(".arow").querySelector(".ast");
+const set=k=>{bs.forEach((b,j)=>b.setAttribute("aria-pressed",j===k?"true":"false"));st.textContent=ST[k];};
+bs.forEach((b,j)=>b.addEventListener("click",()=>set(j)));set(+g.dataset.pick);});})();
 
 /* ---------- boot ---------- */
 buildRail();
