@@ -185,6 +185,7 @@ video,.still{width:100%;max-width:100%;background:#000;border-radius:6px;display
 .langs{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
 .langs li{display:flex;align-items:baseline;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-weight:600;font-size:15px}
 .langs li span{font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.langs li.more{border-style:dashed;background:none;color:var(--muted);font-weight:500}
 
 /* show grid */
 .sched{display:grid;gap:18px}
@@ -466,14 +467,10 @@ td.m{font:500 12.5px var(--mono);white-space:nowrap}
     <ul class="langs">
       <li lang="zh">中文 <span>Mandarin</span></li>
       <li lang="fr">Français <span>French</span></li>
-      <li lang="id">Bahasa Indonesia <span>Indonesian</span></li>
-      <li lang="de">Deutsch <span>German</span></li>
+      <li lang="id">Bahasa <span>Indonesian</span></li>
       <li lang="ja">日本語 <span>Japanese</span></li>
       <li lang="ro">Română <span>Romanian</span></li>
-      <li lang="ko">한국어 <span>Korean</span></li>
-      <li lang="es">Español <span>Spanish</span></li>
-      <li lang="th">ไทย <span>Thai</span></li>
-      <li lang="it">Italiano <span>Italian</span></li>
+      <li class="more">and more</li>
     </ul>
   </div>
 </section>
